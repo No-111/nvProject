@@ -1,20 +1,77 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View , Button , TextInput } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+import {NavigationContainer} from '@react-navigation/native'
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import React from 'react';
+
+function Homescreen({navigation,route}){
+  React.useEffect(()=>{
+    if(route.params?.post){
+      //Post updated,do something with 'route.params.post'
+      //For ex, sent the post to the server
+
+    }
+
+  },[route.params?.post]);
+
+  return(
+    <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+      <Button
+        title='Create Post'
+        onPress={()=>navigation.navigate('post')}
+      />
+      <Text style={{margin: 10}}>Post : {route.params?.post}</Text>
     </View>
-  );
+  )
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+function Createpostscreen({navigation,route}){
+  const [postText,setPostText] = React.useState('');
+  return(
+    //use Fragment
+    <>
+    <TextInput
+    multiline
+    placeholder = 'Type Here'
+    style = {{height:200,padding:10,backgroundColor:'white'}}
+    onChangeText = {setPostText}
+    value = {postText}
+    >
+
+    </TextInput>
+    <Button 
+      title='Post'
+      //sent the text back to home screen
+      onPress={()=> {
+        navigation.navigate('Home',{post: postText})
+
+      }}
+    />
+    </>
+  );
+
+}
+
+
+
+const Stack = createNativeStackNavigator();
+
+export default function App() {
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Home'
+      screenOptions={{
+        headerStyle:{backgroundColor:'aquamarine'},
+        headerTintColor:'azure',
+        headerTitleStyle:{fintWeight:'bold',fontSize:30}
+      }}
+      >
+        <Stack.Screen name='Home' component={Homescreen}/>
+        <Stack.Screen name='post' component={Createpostscreen}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
