@@ -4,6 +4,8 @@ import { StyleSheet, Text, View , Button , TextInput } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import React from 'react';
+import FirstPage from './screens/Firstpage';
+import SecondPage from './screens/Secondpage';
 
 function Homescreen({navigation,route}){
   React.useEffect(()=>{
@@ -69,8 +71,8 @@ export default function App() {
         headerTitleStyle:{fintWeight:'bold',fontSize:30}
       }}
       >
-        <Stack.Screen name='Home' component={Homescreen}/>
-        <Stack.Screen name='post' component={Createpostscreen}/>
+        <Stack.Screen name='First Page' component={FirstPage}/>
+        <Stack.Screen name='Second Page' component={SecondPage}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
