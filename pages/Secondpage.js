@@ -1,4 +1,4 @@
-import { View, Text, Button,StyleSheet } from "react-native";
+import { View, Text, Button} from "react-native";
 import {style1} from "../components/style"
 
 export default function SecondPage({navigation}){
@@ -15,21 +15,3 @@ export default function SecondPage({navigation}){
 
 
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: "center",
-      padding: 20,
-    },
-    heading: {
-      fontSize: 25,
-      textAlign: "center",
-      marginVertical: 10,
-    },
-    textStyle: {
-      textAlign: "center",
-      fontSize: 16,
-      marginVertical: 10,
-    },
-  });
