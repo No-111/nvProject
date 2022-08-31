@@ -4,8 +4,12 @@ import { StyleSheet, Text, View , Button , TextInput } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import React from 'react';
-import FirstPage from './screens/Firstpage';
-import SecondPage from './screens/Secondpage';
+// import FirstPage from './screens/Firstpage';
+// import SecondPage from './screens/Secondpage';
+
+import FirstPage from './pages/Firstpage';
+import SecondPage from './pages/Secondpage';
+import ThirdPage from './pages/Thirdpage';
 
 function Homescreen({navigation,route}){
   React.useEffect(()=>{
@@ -46,6 +50,7 @@ function Createpostscreen({navigation,route}){
     <Button 
       title='Post'
       //sent the text back to home screen
+      
       onPress={()=> {
         navigation.navigate('Home',{post: postText})
 
@@ -73,6 +78,7 @@ export default function App() {
       >
         <Stack.Screen name='First Page' component={FirstPage}/>
         <Stack.Screen name='Second Page' component={SecondPage}/>
+        <Stack.Screen name='Third Page' component={ThirdPage}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
