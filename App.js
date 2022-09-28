@@ -14,7 +14,7 @@ import rtlogo from './assets/react_logo.png';
 
 import Homescreen from './screens/Homescreen';
 
-import ProductScreen from './ProductScreen'
+import ProductScreen from './screens/ProductScreen'
 
 
 const MyTheme = {
