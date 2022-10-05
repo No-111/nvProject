@@ -1,6 +1,5 @@
 import { Text, View, Button, StyleSheet, SafeAreaView, Image } from 'react-native';
 import React from 'react';
-
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import {
@@ -13,9 +12,29 @@ import {
 import rtlogo from './assets/react_logo.png';
 
 import Homescreen from './screens/Homescreen';
-
+import DetailScreen from './screens/DetailScreen'
 import ProductScreen from './screens/ProductScreen'
 
+
+const Stack = createNativeStackNavigator();
+function ProductStack(){
+  return(
+    <Stack.Navigator
+    screenOptions={{
+      headerStyle:{
+        backgroundColor:'azure'
+      },
+      headerTintColor:'gray',
+      headerTitleStyle:{
+        fontWeight:'bold'
+      }
+    }}
+    >
+      <Stack.Screen name="Product" component={ProductScreen}/>
+      <Stack.Screen name="Detail" component={DetailScreen}/>
+    </Stack.Navigator>
+  )
+}
 
 const MyTheme = {
   ...DefaultTheme,
@@ -75,7 +94,7 @@ function MyDrawer() {
       }}
     >
       <Drawer.Screen name='Home' component={Homescreen} />
-      <Drawer.Screen name='Product' component={ProductScreen} />
+      <Drawer.Screen name='Product' component={ProductStack} />
     </Drawer.Navigator>
   );
 }
